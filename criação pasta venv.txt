@@ -1,0 +1,11 @@
+Criar pasta venv(no terminal): 
+	python -m venv .venv
+
+Ativação pasta venv (no terminal): 
+	.venv\Scripts\activate
+
+Instalar bibliotecas:
+	pip install flask
+	python.exe -m pip install --upgrade pip
+	pip install Flask-SQLAlchemy Flask-Migrate
+    

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %} 
+
+    <div class="container text-white bg bg-dark">
+        {% include 'nave.html' %}
+        <div class="row mt-4">
+            <h3>Lista de Contatos</h3>
+
+            <form method="get" class="row">
+                <div class="col-9">
+                    <input type="text" name="pesquisa" class="form-control bg-secondary text-white">
+                </div>
+                <div class="col-3">
+                    <button type="submit" class="btn btn-primary">Pesquisar</button>
+                </div>
+            </form>
+
+            <div class="col-12">
+                <table class="table text-white bg bg-dark">
+                    <thead>
+                        <tr>
+                            <th class="text-white bg bg-dark">Nome</th>
+                            <th class="text-white bg bg-dark">E-Mail</th>
+                            <th class="text-white bg bg-dark">Assunto</th>
+                            <th class="text-white bg bg-dark">Respondido</th>
+                        </tr>
+                    </thead>
+                    <body class="text-white bg bg-dark">
+                        {% for linha in context['dados'] %}
+                        <tr class="text-white bg bg-dark">
+                            <td class="text-white bg bg-dark">{{linha.nome}}</td>
+                            <td class="text-white bg bg-dark">{{linha.email}}</td>
+                            <td class="text-white bg bg-dark">{{linha.assunto}}</td>
+                            <td class="text-white bg bg-dark">
+    
+                                {% if linha.respondido == 1 %}
+                                    SIM
+                                {% else %}
+                                    NÃO
+                                {% endif %}
+    
+                            </td>
+                            <td class="text-white bg bg-dark"><a href="{{url_for('contatoDetail', id=linha.id)}}" class="text-white"><img src="{{url_for('static', filename='img/andre.png')}}" style="width: 30px;"></a></td>
+                        </tr>
+    
+                        {% endfor %}
+    
+                    </body>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
